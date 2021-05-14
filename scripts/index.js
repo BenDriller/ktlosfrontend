@@ -1,17 +1,17 @@
 const GP_KEY = "gp";
 const PRIO_KEY = "prio";
 const WOW_ID_KEY = "wowID";
-const WOW_HEAD_LINK = "https://classic.wowhead.com/";
+const WOW_HEAD_LINK = "https://tbc.wowhead.com/";
 const BASE_REQUEST_LINK = "https://bendriller.github.io/";
-const JSON_REQUEST_MAP = {"naxx":"KTLOSNaxxLoot.json", "aq40" : "KTLOSAQ40Loot.json", "bwl": "KTLOSBWLLoot.json", "mc":"KTLOSMCLoot.json", "wb":"KTLOSWorldBossLoot.json"};
-const RAID_NAME_MAP = {"naxx" : "Naxxramas","wb" : "World Boss","aq40" : "Temple of Ahn'Qiraj", "bwl": "Blackwing Lair", "mc":"Molten Core"};
+const JSON_REQUEST_MAP = {"kara" : "KTLOSKaraLoot.json", "magth" : "KTLOSMagthLoot.json", "gruul" : "KTLOSGruulLoot.json", "naxx" : "KTLOSNaxxLoot.json", "aq40" : "KTLOSAQ40Loot.json", "bwl": "KTLOSBWLLoot.json", "wb":"KTLOSWorldBossLoot.json"};
+const RAID_NAME_MAP = {"kara" : "Karazhan", "magth" : "Magtheridon's Lair", "gruul" : "Gruul's Lair", "naxx" : "Naxxramas", "wb" : "World Boss", "aq40" : "Temple of Ahn'Qiraj", "bwl": "Blackwing Lair"};
 const WOWHEAD_JS = "https://wow.zamimg.com/widgets/power.js";
 
 const whTooltips = {colorLinks: true, iconizeLinks: true, renameLinks: true};
 
 var jsonCache = new Map();
 var lastFilterValue = "";
-var lastRaid = "naxx";
+var lastRaid = "kara";
 
 function loadJsonAndRender(raidName) {
 	lastRaid = raidName;
@@ -35,6 +35,18 @@ function loadJsonAndRender(raidName) {
 	xhr.send();
 }
 
+function loadKara() {
+	loadJsonAndRender("kara");	
+}
+
+function loadGruul() {
+	loadJsonAndRender("gruul");	
+}
+
+function loadMagth() {
+	loadJsonAndRender("magth");	
+}
+
 function loadNaxx() {
 	loadJsonAndRender("naxx");
 }
@@ -45,10 +57,6 @@ function loadBWL() {
 
 function loadAQ40() {
 	loadJsonAndRender("aq40");
-}
-
-function loadMC() {
-	loadJsonAndRender("mc");
 }
 
 function loadWorldBoss() {
