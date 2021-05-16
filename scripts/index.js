@@ -3,8 +3,8 @@ const PRIO_KEY = "prio";
 const WOW_ID_KEY = "wowID";
 const WOW_HEAD_LINK = "https://tbc.wowhead.com/";
 const BASE_REQUEST_LINK = "https://bendriller.github.io/";
-const JSON_REQUEST_MAP = {"kara" : "KTLOSKaraLoot.json", "magth" : "KTLOSMagthLoot.json", "gruul" : "KTLOSGruulLoot.json", "naxx" : "KTLOSNaxxLoot.json", "aq40" : "KTLOSAQ40Loot.json", "bwl": "KTLOSBWLLoot.json", "wb":"KTLOSWorldBossLoot.json"};
-const RAID_NAME_MAP = {"kara" : "Karazhan", "magth" : "Magtheridon's Lair", "gruul" : "Gruul's Lair", "naxx" : "Naxxramas", "wb" : "World Boss", "aq40" : "Temple of Ahn'Qiraj", "bwl": "Blackwing Lair"};
+const JSON_REQUEST_MAP = {"sunwell": "KTLOSSunwellLoot.json", "bt": "KTLOSBTLoot.json", "hyjal": "KTLOSHyjalLoot.json", "tk": "KTLOSTKLoot.json", "ssc": "KTLOSSSCLoot.json", "kara": "KTLOSKaraLoot.json", "magth": "KTLOSMagthLoot.json", "gruul": "KTLOSGruulLoot.json", "naxx": "KTLOSNaxxLoot.json", "aq40": "KTLOSAQ40Loot.json", "bwl": "KTLOSBWLLoot.json", "wb":"KTLOSWorldBossLoot.json"};
+const RAID_NAME_MAP = {"sunwell": "Sunwell Plateau", "bt": "Black Temple", "hyjal": "Battle for Mount Hyjal", "tk": "Tempest Keep: The Eye", "ssc": "Serpentshrine Cavern", "kara" : "Karazhan", "magth" : "Magtheridon's Lair", "gruul" : "Gruul's Lair", "naxx" : "Naxxramas", "wb" : "World Boss", "aq40" : "Temple of Ahn'Qiraj", "bwl": "Blackwing Lair"};
 const WOWHEAD_JS = "https://wow.zamimg.com/widgets/power.js";
 
 const whTooltips = {colorLinks: true, iconizeLinks: true, renameLinks: true};
@@ -33,6 +33,26 @@ function loadJsonAndRender(raidName) {
 	let jsonUrl = BASE_REQUEST_LINK + JSON_REQUEST_MAP[raidName];
 	xhr.open('GET', jsonUrl);
 	xhr.send();
+}
+
+function loadSunwell() {
+	loadJsonAndRender("sunwell");
+}
+
+function loadBT() {
+	loadJsonAndRender("bt");
+}
+
+function loadHyjal() {
+	loadJsonAndRender("hyjal");
+}
+
+function loadTK() {
+	loadJsonAndRender("tk");
+}
+
+function loadSSC() {
+	loadJsonAndRender("ssc");
 }
 
 function loadKara() {
